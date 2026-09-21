@@ -48,6 +48,12 @@
     "name": "DrPeppers",
     "email": "drpeppers@duck.com"
   },
+  "source": "https://github.com/WNijhof/homey-atag-lydos",
+  "homepage": "https://github.com/WNijhof/homey-atag-lydos",
+  "support": "https://github.com/WNijhof/homey-atag-lydos/issues",
+  "bugs": {
+    "url": "https://github.com/WNijhof/homey-atag-lydos/issues"
+  },
   "flow": {
     "conditions": [
       {

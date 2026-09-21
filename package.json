@@ -4,6 +4,7 @@
   "description": "Homey app for the Atag Lydos Hybrid heat pump water heater",
   "main": "app.js",
   "private": true,
+  "license": "GPL-3.0-or-later",
   "scripts": {
     "test-api": "node scripts/test-api.js",
     "validate": "homey app validate",
