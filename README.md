@@ -2,7 +2,7 @@
 
 Bedien je **Atag Lydos Hybrid** warmtepompboiler vanuit Homey: temperatuur instellen, modus kiezen, aan- en uitzetten, en meekijken hoe warm het water is.
 
-> **Status:** in test. De app is nog niet gecertificeerd voor de Homey App Store — installeren gaat via de testversie hieronder. Werkt hij bij jou? Laat het weten in de [issues](https://github.com/WNijhof/homey-atag-lydos/issues), dat helpt om hem door de certificering te krijgen.
+> **Status:** in test. De app is nog niet gecertificeerd voor de Homey App Store — installeren gaat via de testversie hieronder. Werkt hij bij jou? Laat het weten op het [Homey Community Forum](https://community.homey.app/t/159850) of in de [issues](https://github.com/WNijhof/homey-atag-lydos/issues), dat helpt om hem door de certificering te krijgen.
 
 ## Installeren
 

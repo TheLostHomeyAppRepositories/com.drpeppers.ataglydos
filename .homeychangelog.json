@@ -1,4 +1,8 @@
 {
+  "1.0.0": {
+    "en": "First public release. Set the temperature and mode, turn the water heater on or off, and read the water temperature, heating status and available showers.",
+    "nl": "Eerste openbare versie. Temperatuur en modus instellen, de boiler aan- of uitzetten, en de watertemperatuur, opwarmstatus en beschikbare douchebeurten uitlezen."
+  },
   "0.1.0": {
     "en": "First release. Set the temperature and mode, turn the water heater on or off, and read the water temperature, heating status and available showers.",
     "nl": "Eerste versie. Temperatuur en modus instellen, de boiler aan- of uitzetten, en de watertemperatuur, opwarmstatus en beschikbare douchebeurten uitlezen."

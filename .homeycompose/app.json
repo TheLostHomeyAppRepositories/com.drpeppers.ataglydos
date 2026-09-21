@@ -1,6 +1,6 @@
 {
   "id": "com.drpeppers.ataglydos",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "compatibility": ">=12.0.0",
   "sdk": 3,
   "runtime": "nodejs",
@@ -52,5 +52,6 @@
   "support": "https://github.com/WNijhof/homey-atag-lydos/issues",
   "bugs": {
     "url": "https://github.com/WNijhof/homey-atag-lydos/issues"
-  }
+  },
+  "homeyCommunityTopicId": 159850
 }
