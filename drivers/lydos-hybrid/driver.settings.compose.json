@@ -1,0 +1,17 @@
+[
+  {
+    "id": "poll_interval",
+    "type": "number",
+    "label": {
+      "en": "Polling interval (minutes)",
+      "nl": "Ophaalinterval (minuten)"
+    },
+    "hint": {
+      "en": "How often the status is fetched from the Ariston cloud. Polling too often can get your account temporarily blocked.",
+      "nl": "Hoe vaak de status uit de Ariston-cloud wordt opgehaald. Te vaak ophalen kan je account tijdelijk laten blokkeren."
+    },
+    "value": 5,
+    "min": 2,
+    "max": 60
+  }
+]

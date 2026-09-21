@@ -1,0 +1,384 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "com.drpeppers.ataglydos",
+  "version": "0.1.0",
+  "compatibility": ">=12.0.0",
+  "sdk": 3,
+  "runtime": "nodejs",
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "Atag Lydos",
+    "nl": "Atag Lydos"
+  },
+  "description": {
+    "en": "Control your Atag Lydos Hybrid heat pump water heater",
+    "nl": "Bedien je Atag Lydos Hybrid warmtepompboiler"
+  },
+  "category": [
+    "climate"
+  ],
+  "tags": {
+    "en": [
+      "atag",
+      "ariston",
+      "lydos",
+      "water heater",
+      "heat pump",
+      "boiler"
+    ],
+    "nl": [
+      "atag",
+      "ariston",
+      "lydos",
+      "boiler",
+      "warmtepompboiler",
+      "warmtepomp"
+    ]
+  },
+  "permissions": [],
+  "brandColor": "#1E6FA8",
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "DrPeppers",
+    "email": "drpeppers@duck.com"
+  },
+  "flow": {
+    "conditions": [
+      {
+        "id": "mode_is",
+        "title": {
+          "en": "Mode !{{is|is not}}",
+          "nl": "Modus !{{is|is niet}}"
+        },
+        "titleFormatted": {
+          "en": "Mode !{{is|is not}} [[mode]]",
+          "nl": "Modus !{{is|is niet}} [[mode]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=lydos-hybrid"
+          },
+          {
+            "type": "dropdown",
+            "name": "mode",
+            "title": {
+              "en": "Mode",
+              "nl": "Modus"
+            },
+            "values": [
+              {
+                "id": "imemory",
+                "label": {
+                  "en": "i-Memory",
+                  "nl": "i-Memory"
+                }
+              },
+              {
+                "id": "green",
+                "label": {
+                  "en": "Green (heat pump only)",
+                  "nl": "Green (alleen warmtepomp)"
+                }
+              },
+              {
+                "id": "program",
+                "label": {
+                  "en": "Program",
+                  "nl": "Programma"
+                }
+              },
+              {
+                "id": "boost",
+                "label": {
+                  "en": "Boost",
+                  "nl": "Boost"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "is_heating",
+        "title": {
+          "en": "!{{Is|Is not}} heating",
+          "nl": "!{{Is|Is niet}} aan het opwarmen"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=lydos-hybrid"
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "set_mode",
+        "title": {
+          "en": "Set mode",
+          "nl": "Zet modus"
+        },
+        "titleFormatted": {
+          "en": "Set mode to [[mode]]",
+          "nl": "Zet modus op [[mode]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=lydos-hybrid"
+          },
+          {
+            "type": "dropdown",
+            "name": "mode",
+            "title": {
+              "en": "Mode",
+              "nl": "Modus"
+            },
+            "values": [
+              {
+                "id": "imemory",
+                "label": {
+                  "en": "i-Memory",
+                  "nl": "i-Memory"
+                }
+              },
+              {
+                "id": "green",
+                "label": {
+                  "en": "Green (heat pump only)",
+                  "nl": "Green (alleen warmtepomp)"
+                }
+              },
+              {
+                "id": "program",
+                "label": {
+                  "en": "Program",
+                  "nl": "Programma"
+                }
+              },
+              {
+                "id": "boost",
+                "label": {
+                  "en": "Boost",
+                  "nl": "Boost"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "drivers": [
+    {
+      "name": {
+        "en": "Lydos Hybrid",
+        "nl": "Lydos Hybrid"
+      },
+      "class": "waterheater",
+      "capabilities": [
+        "target_temperature",
+        "measure_temperature",
+        "lydos_mode",
+        "onoff",
+        "lydos_heating",
+        "lydos_showers"
+      ],
+      "capabilitiesOptions": {
+        "target_temperature": {
+          "min": 40,
+          "max": 70,
+          "step": 1,
+          "decimals": 0
+        },
+        "measure_temperature": {
+          "title": {
+            "en": "Water temperature",
+            "nl": "Watertemperatuur"
+          }
+        },
+        "onoff": {
+          "uiQuickAction": false
+        }
+      },
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "cloud"
+      ],
+      "images": {
+        "small": "/drivers/lydos-hybrid/assets/images/small.png",
+        "large": "/drivers/lydos-hybrid/assets/images/large.png",
+        "xlarge": "/drivers/lydos-hybrid/assets/images/xlarge.png"
+      },
+      "pair": [
+        {
+          "id": "login_credentials",
+          "template": "login_credentials",
+          "options": {
+            "title": {
+              "en": "Log in with your Atag / Ariston NET account",
+              "nl": "Log in met je Atag / Ariston NET-account"
+            },
+            "usernameLabel": {
+              "en": "E-mail address",
+              "nl": "E-mailadres"
+            },
+            "usernamePlaceholder": {
+              "en": "you@example.com",
+              "nl": "jij@voorbeeld.nl"
+            },
+            "passwordLabel": {
+              "en": "Password",
+              "nl": "Wachtwoord"
+            }
+          },
+          "navigation": {
+            "next": "list_devices"
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "repair": [
+        {
+          "id": "login_credentials",
+          "template": "login_credentials",
+          "options": {
+            "title": {
+              "en": "Log in again with your Atag / Ariston NET account",
+              "nl": "Log opnieuw in met je Atag / Ariston NET-account"
+            },
+            "usernameLabel": {
+              "en": "E-mail address",
+              "nl": "E-mailadres"
+            },
+            "passwordLabel": {
+              "en": "Password",
+              "nl": "Wachtwoord"
+            }
+          },
+          "navigation": {
+            "next": "done"
+          }
+        },
+        {
+          "id": "done",
+          "template": "done"
+        }
+      ],
+      "id": "lydos-hybrid",
+      "settings": [
+        {
+          "id": "poll_interval",
+          "type": "number",
+          "label": {
+            "en": "Polling interval (minutes)",
+            "nl": "Ophaalinterval (minuten)"
+          },
+          "hint": {
+            "en": "How often the status is fetched from the Ariston cloud. Polling too often can get your account temporarily blocked.",
+            "nl": "Hoe vaak de status uit de Ariston-cloud wordt opgehaald. Te vaak ophalen kan je account tijdelijk laten blokkeren."
+          },
+          "value": 5,
+          "min": 2,
+          "max": 60
+        }
+      ]
+    }
+  ],
+  "capabilities": {
+    "lydos_heating": {
+      "type": "boolean",
+      "title": {
+        "en": "Heating",
+        "nl": "Aan het opwarmen"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": true,
+      "insightsTitleTrue": {
+        "en": "Started heating",
+        "nl": "Opwarmen gestart"
+      },
+      "insightsTitleFalse": {
+        "en": "Stopped heating",
+        "nl": "Opwarmen gestopt"
+      }
+    },
+    "lydos_mode": {
+      "type": "enum",
+      "title": {
+        "en": "Mode",
+        "nl": "Modus"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "picker",
+      "values": [
+        {
+          "id": "imemory",
+          "title": {
+            "en": "i-Memory",
+            "nl": "i-Memory"
+          }
+        },
+        {
+          "id": "green",
+          "title": {
+            "en": "Green (heat pump only)",
+            "nl": "Green (alleen warmtepomp)"
+          }
+        },
+        {
+          "id": "program",
+          "title": {
+            "en": "Program",
+            "nl": "Programma"
+          }
+        },
+        {
+          "id": "boost",
+          "title": {
+            "en": "Boost",
+            "nl": "Boost"
+          }
+        }
+      ]
+    },
+    "lydos_showers": {
+      "type": "number",
+      "title": {
+        "en": "Available showers",
+        "nl": "Beschikbare douchebeurten"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "decimals": 0,
+      "insights": true
+    }
+  }
+}

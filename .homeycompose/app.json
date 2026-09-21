@@ -1,0 +1,50 @@
+{
+  "id": "com.drpeppers.ataglydos",
+  "version": "0.1.0",
+  "compatibility": ">=12.0.0",
+  "sdk": 3,
+  "runtime": "nodejs",
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "Atag Lydos",
+    "nl": "Atag Lydos"
+  },
+  "description": {
+    "en": "Control your Atag Lydos Hybrid heat pump water heater",
+    "nl": "Bedien je Atag Lydos Hybrid warmtepompboiler"
+  },
+  "category": [
+    "climate"
+  ],
+  "tags": {
+    "en": [
+      "atag",
+      "ariston",
+      "lydos",
+      "water heater",
+      "heat pump",
+      "boiler"
+    ],
+    "nl": [
+      "atag",
+      "ariston",
+      "lydos",
+      "boiler",
+      "warmtepompboiler",
+      "warmtepomp"
+    ]
+  },
+  "permissions": [],
+  "brandColor": "#1E6FA8",
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "DrPeppers",
+    "email": "drpeppers@duck.com"
+  }
+}

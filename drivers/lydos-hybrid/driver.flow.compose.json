@@ -1,0 +1,115 @@
+{
+  "actions": [
+    {
+      "id": "set_mode",
+      "title": {
+        "en": "Set mode",
+        "nl": "Zet modus"
+      },
+      "titleFormatted": {
+        "en": "Set mode to [[mode]]",
+        "nl": "Zet modus op [[mode]]"
+      },
+      "args": [
+        {
+          "type": "dropdown",
+          "name": "mode",
+          "title": {
+            "en": "Mode",
+            "nl": "Modus"
+          },
+          "values": [
+            {
+              "id": "imemory",
+              "label": {
+                "en": "i-Memory",
+                "nl": "i-Memory"
+              }
+            },
+            {
+              "id": "green",
+              "label": {
+                "en": "Green (heat pump only)",
+                "nl": "Green (alleen warmtepomp)"
+              }
+            },
+            {
+              "id": "program",
+              "label": {
+                "en": "Program",
+                "nl": "Programma"
+              }
+            },
+            {
+              "id": "boost",
+              "label": {
+                "en": "Boost",
+                "nl": "Boost"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "conditions": [
+    {
+      "id": "mode_is",
+      "title": {
+        "en": "Mode !{{is|is not}}",
+        "nl": "Modus !{{is|is niet}}"
+      },
+      "titleFormatted": {
+        "en": "Mode !{{is|is not}} [[mode]]",
+        "nl": "Modus !{{is|is niet}} [[mode]]"
+      },
+      "args": [
+        {
+          "type": "dropdown",
+          "name": "mode",
+          "title": {
+            "en": "Mode",
+            "nl": "Modus"
+          },
+          "values": [
+            {
+              "id": "imemory",
+              "label": {
+                "en": "i-Memory",
+                "nl": "i-Memory"
+              }
+            },
+            {
+              "id": "green",
+              "label": {
+                "en": "Green (heat pump only)",
+                "nl": "Green (alleen warmtepomp)"
+              }
+            },
+            {
+              "id": "program",
+              "label": {
+                "en": "Program",
+                "nl": "Programma"
+              }
+            },
+            {
+              "id": "boost",
+              "label": {
+                "en": "Boost",
+                "nl": "Boost"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "is_heating",
+      "title": {
+        "en": "!{{Is|Is not}} heating",
+        "nl": "!{{Is|Is niet}} aan het opwarmen"
+      }
+    }
+  ]
+}

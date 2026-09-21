@@ -1,0 +1,19 @@
+{
+  "type": "boolean",
+  "title": {
+    "en": "Heating",
+    "nl": "Aan het opwarmen"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "insights": true,
+  "insightsTitleTrue": {
+    "en": "Started heating",
+    "nl": "Opwarmen gestart"
+  },
+  "insightsTitleFalse": {
+    "en": "Stopped heating",
+    "nl": "Opwarmen gestopt"
+  }
+}

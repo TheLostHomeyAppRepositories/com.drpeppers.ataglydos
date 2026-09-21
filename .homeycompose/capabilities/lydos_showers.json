@@ -1,0 +1,12 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Available showers",
+    "nl": "Beschikbare douchebeurten"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "decimals": 0,
+  "insights": true
+}

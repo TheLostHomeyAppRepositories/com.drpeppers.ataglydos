@@ -1,0 +1,15 @@
+{
+  "name": "com.drpeppers.ataglydos",
+  "version": "0.1.0",
+  "description": "Homey app for the Atag Lydos Hybrid heat pump water heater",
+  "main": "app.js",
+  "private": true,
+  "scripts": {
+    "test-api": "node scripts/test-api.js",
+    "validate": "homey app validate",
+    "install-homey": "homey app install"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}

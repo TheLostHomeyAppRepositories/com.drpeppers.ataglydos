@@ -1,0 +1,108 @@
+{
+  "name": {
+    "en": "Lydos Hybrid",
+    "nl": "Lydos Hybrid"
+  },
+  "class": "waterheater",
+  "capabilities": [
+    "target_temperature",
+    "measure_temperature",
+    "lydos_mode",
+    "onoff",
+    "lydos_heating",
+    "lydos_showers"
+  ],
+  "capabilitiesOptions": {
+    "target_temperature": {
+      "min": 40,
+      "max": 70,
+      "step": 1,
+      "decimals": 0
+    },
+    "measure_temperature": {
+      "title": {
+        "en": "Water temperature",
+        "nl": "Watertemperatuur"
+      }
+    },
+    "onoff": {
+      "uiQuickAction": false
+    }
+  },
+  "platforms": [
+    "local"
+  ],
+  "connectivity": [
+    "cloud"
+  ],
+  "images": {
+    "small": "{{driverAssetsPath}}/images/small.png",
+    "large": "{{driverAssetsPath}}/images/large.png",
+    "xlarge": "{{driverAssetsPath}}/images/xlarge.png"
+  },
+  "pair": [
+    {
+      "id": "login_credentials",
+      "template": "login_credentials",
+      "options": {
+        "title": {
+          "en": "Log in with your Atag / Ariston NET account",
+          "nl": "Log in met je Atag / Ariston NET-account"
+        },
+        "usernameLabel": {
+          "en": "E-mail address",
+          "nl": "E-mailadres"
+        },
+        "usernamePlaceholder": {
+          "en": "you@example.com",
+          "nl": "jij@voorbeeld.nl"
+        },
+        "passwordLabel": {
+          "en": "Password",
+          "nl": "Wachtwoord"
+        }
+      },
+      "navigation": {
+        "next": "list_devices"
+      }
+    },
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "navigation": {
+        "next": "add_devices"
+      }
+    },
+    {
+      "id": "add_devices",
+      "template": "add_devices"
+    }
+  ],
+  "repair": [
+    {
+      "id": "login_credentials",
+      "template": "login_credentials",
+      "options": {
+        "title": {
+          "en": "Log in again with your Atag / Ariston NET account",
+          "nl": "Log opnieuw in met je Atag / Ariston NET-account"
+        },
+        "usernameLabel": {
+          "en": "E-mail address",
+          "nl": "E-mailadres"
+        },
+        "passwordLabel": {
+          "en": "Password",
+          "nl": "Wachtwoord"
+        }
+      },
+      "navigation": {
+        "next": "done"
+      }
+    },
+    {
+      "id": "done",
+      "template": "done"
+    }
+  ]
+}

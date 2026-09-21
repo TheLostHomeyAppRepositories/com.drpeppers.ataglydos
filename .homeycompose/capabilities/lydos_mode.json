@@ -1,0 +1,40 @@
+{
+  "type": "enum",
+  "title": {
+    "en": "Mode",
+    "nl": "Modus"
+  },
+  "getable": true,
+  "setable": true,
+  "uiComponent": "picker",
+  "values": [
+    {
+      "id": "imemory",
+      "title": {
+        "en": "i-Memory",
+        "nl": "i-Memory"
+      }
+    },
+    {
+      "id": "green",
+      "title": {
+        "en": "Green (heat pump only)",
+        "nl": "Green (alleen warmtepomp)"
+      }
+    },
+    {
+      "id": "program",
+      "title": {
+        "en": "Program",
+        "nl": "Programma"
+      }
+    },
+    {
+      "id": "boost",
+      "title": {
+        "en": "Boost",
+        "nl": "Boost"
+      }
+    }
+  ]
+}
