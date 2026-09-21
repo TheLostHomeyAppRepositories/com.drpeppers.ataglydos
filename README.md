@@ -1,77 +1,94 @@
 # Atag Lydos voor Homey
 
-Onofficiële Homey-app om een **Atag Lydos Hybrid** warmtepompboiler te bedienen.
+Bedien je **Atag Lydos Hybrid** warmtepompboiler vanuit Homey: temperatuur instellen, modus kiezen, aan- en uitzetten, en meekijken hoe warm het water is.
 
-- Gewenste watertemperatuur instellen (40–70 °C, of tot het maximum dat op de boiler is ingesteld)
-- Modus kiezen: i-Memory, Green (alleen warmtepomp), Programma, Boost
-- Boiler aan/uit zetten
-- Uitlezen: huidige watertemperatuur, of hij aan het opwarmen is, aantal beschikbare douchebeurten
+> **Status:** in test. De app is nog niet gecertificeerd voor de Homey App Store — installeren gaat via de testversie hieronder. Werkt hij bij jou? Laat het weten in de [issues](https://github.com/WNijhof/homey-atag-lydos/issues), dat helpt om hem door de certificering te krijgen.
 
-De app gebruikt de **Ariston NET-cloud** (Atag hoort bij de Ariston-groep), dezelfde als de Atag-app. De boiler moet dus via wifi verbonden zijn en werken in de Atag-app. Je logt in met hetzelfde e-mailadres en wachtwoord.
+## Installeren
 
-> Niet verbonden aan Atag of Ariston. De cloud-API is niet officieel gedocumenteerd, dus Atag/Ariston kan hem zonder aankondiging veranderen.
+1. Zorg dat je boiler via wifi verbonden is en werkt in de **Atag-app**. Deze app praat met dezelfde cloud.
+2. Installeer de testversie: **[homey.app/a/com.drpeppers.ataglydos/test](https://homey.app/a/com.drpeppers.ataglydos/test/)**
+3. In de Homey-app: **Apparaten → + → Atag Lydos → Lydos Hybrid**
+4. Log in met je **Atag-gegevens** — hetzelfde e-mailadres en wachtwoord als in de Atag-app.
 
-## Goed om te weten over de Lydos Hybrid
+Werkt op **Homey Pro** (2019 en 2023) en de **Homey Self-Hosted Server**. Op Homey Cloud met een Bridge kun je geen testversies installeren.
 
-Uit de Atag-handleiding:
+## Wat de app kan
+
+| | |
+|---|---|
+| **Instellen** | Watertemperatuur (40–70 °C, of tot het maximum dat op de boiler zelf is ingesteld) |
+| **Modus** | i-Memory, Green, Programma, Boost |
+| **Aan/uit** | Boiler in- of uitschakelen |
+| **Uitlezen** | Watertemperatuur, of hij aan het opwarmen is, aantal beschikbare douchebeurten |
+
+Watertemperatuur en douchebeurten worden bijgehouden in Insights, dus je kunt het verloop over de dag terugzien.
+
+### Flowkaarten
+
+- **Als** — Temperatuur veranderd, Doeltemperatuur veranderd
+- **En** — Modus is …, Is aan het opwarmen
+- **Dan** — Stel temperatuur in, Zet modus op …, Zet aan/uit
+
+## Goed om te weten
+
+Uit de Atag-handleiding, en belangrijk als je flows gaat bouwen:
 
 | Modus | Wat hij doet |
 |---|---|
 | **i-Memory** | Fabrieksinstelling. Leert je verbruik; **vanaf de tweede week past de boiler de ingestelde temperatuur zelf aan**. Een temperatuur die je vanuit Homey zet, kan dus later door de boiler worden overschreven. |
-| **Green** | Alleen de warmtepomp, zuinigst. Temperatuur **40–53 °C**. De app weigert een hogere temperatuur in deze modus. |
+| **Green** | Alleen de warmtepomp, zuinigst. Temperatuur 40–53 °C; de app weigert een hogere waarde in deze modus. |
 | **Programma** | Warm water op vaste tijden, warmtepomp heeft voorrang. |
-| **Boost** | Warmtepomp én element, snelst opwarmen. |
+| **Boost** | Warmtepomp én elektrisch element, snelst opwarmen. |
 
-De warmtepomp werkt tot 53 °C; daarboven verwarmt alleen het element. Wil je vanuit Homey sturen (bijvoorbeeld op zonne-overschot of dynamische stroomprijs), dan werkt **Green** het voorspelbaarst.
+De warmtepomp komt tot 53 °C; daarboven verwarmt alleen het element. **Wil je vanuit Homey sturen** — op zonne-overschot of een dynamisch stroomtarief bijvoorbeeld — **gebruik dan Green.** Dat is de enige modus die precies doet wat je vraagt en niets achteraf bijstelt.
 
-## Flowkaarten
+De status wordt standaard elke 5 minuten opgehaald, per apparaat instelbaar tussen 2 en 60 minuten. Vaker dan dat is niet verstandig: de Ariston-cloud kan je account tijdelijk blokkeren (HTTP 429).
 
-- **Dan:** Stel temperatuur in (standaard Homey-kaart), Zet modus op …, Zet aan/uit
-- **En:** Modus is …, Is aan het opwarmen
-- **Als:** Temperatuur veranderd, Doeltemperatuur veranderd (standaard Homey-kaarten)
+## Problemen oplossen
 
-## Installeren op je eigen Homey
+**"Inloggen mislukt"** — Controleer eerst of je met dezelfde gegevens in de Atag-app komt. Klopt dat, open dan het apparaat in Homey en kies **Repareren** om opnieuw in te loggen.
 
-Werkt op een **Homey Pro** (2019 en 2023) en **Homey Self-Hosted Server**. Op Homey Cloud (met Homey Bridge) kun je zelf geen apps installeren, alleen via de App Store.
+**Apparaat staat op niet-beschikbaar** — De app meldt dit na drie mislukte pogingen. Meestal is de boiler offline of is de Ariston-cloud tijdelijk onbereikbaar; hij herstelt zichzelf zodra de verbinding terug is.
 
-```powershell
-npm install --global homey   # eenmalig, Node.js 24+ aanbevolen
-homey login                  # met je Athom/Homey-account
-homey select                 # kies je Homey
-homey app install            # vanuit deze map
-```
-
-Daarna in de Homey-app: **Apparaat toevoegen → Atag Lydos → Lydos Hybrid** en log in met je Atag-gegevens.
-
-- `homey app install` installeert de app permanent; hij blijft draaien na een herstart.
-- `homey app run --remote` draait de app tijdelijk op je Homey met live logs in je terminal. Handig voor debuggen.
-
-## Verbinding testen zonder Homey
-
-```powershell
-node scripts/test-api.js                  # inloggen, boiler zoeken, status en instellingen tonen
-node scripts/test-api.js --set-temp 50    # en de gewenste temperatuur op 50 °C zetten
-```
-
-Het script vraagt om je e-mail en wachtwoord. Het wachtwoord wordt niet getoond en nergens opgeslagen.
+**Boiler verschijnt niet bij het koppelen** — De app herkent de Lydos Hybrid aan `sys=4` en `wheType=2`. Meldt jouw apparaat zich anders, dan valt hij erbuiten. Open een issue met de regel `Found n Velis plant(s): …` uit je app-logs, dan pas ik het filter aan.
 
 ## Hoe het werkt
 
-Endpoints op `https://www.ariston-net.remotethermo.com/api/v2/`, overgenomen uit de reverse-engineerde [python-ariston-api](https://github.com/fustom/python-ariston-api) (gebruikt door de Home Assistant-integratie):
+Atag hoort bij de Ariston-groep, en de Lydos Hybrid hangt aan de **Ariston NET-cloud** — dezelfde die de Atag-app gebruikt. De endpoints zijn overgenomen uit het reverse-engineerde [python-ariston-api](https://github.com/fustom/python-ariston-api), dat ook onder de Home Assistant-integratie ligt. Basis: `https://www.ariston-net.remotethermo.com/api/v2/`
 
 | Actie | Request |
 |---|---|
 | Inloggen | `POST accounts/login` `{"usr": …, "pwd": …}` → `token` (header `ar.authToken`) |
-| Boilers | `GET velis/plants` (Lydos Hybrid: `sys = 4`, `wheType = 2`) |
+| Boilers | `GET velis/plants` |
 | Status | `GET velis/sePlantData/{gw}` (`temp`, `reqTemp`, `mode`, `on`, `heatReq`, `avShw`) |
 | Instellingen | `GET velis/sePlantData/{gw}/plantSettings` |
 | Temperatuur | `POST velis/sePlantData/{gw}/temperature` `{"new": 55}` |
 | Modus | `POST velis/sePlantData/{gw}/mode` `{"new": 2}` (1 i-Memory, 2 Green, 6 Programma, 7 Boost) |
 | Aan/uit | `POST velis/sePlantData/{gw}/switch` `true` / `false` |
 
-De status wordt standaard elke 5 minuten opgehaald (instelbaar per apparaat, minimaal 2). Te vaak ophalen kan je account tijdelijk laten blokkeren (HTTP 429).
+Je inloggegevens gaan rechtstreeks van je Homey naar Ariston en worden nergens anders opgeslagen of doorgestuurd. Zie [`lib/AristonApi.js`](lib/AristonApi.js).
 
-## Projectstructuur
+## Zelf aan de slag
+
+```bash
+npm install --global homey
+homey login
+homey select
+homey app run --remote     # tijdelijk draaien met live logs
+homey app install          # permanent installeren
+```
+
+De cloudverbinding testen zonder Homey:
+
+```bash
+node scripts/test-api.js                  # inloggen, boiler zoeken, status tonen
+node scripts/test-api.js --set-temp 50    # en de temperatuur zetten
+```
+
+Het script vraagt om je e-mailadres en wachtwoord. Het wachtwoord wordt niet getoond en nergens bewaard.
+
+### Structuur
 
 ```
 .homeycompose/          app-manifest en eigen capabilities (bron voor app.json)
@@ -81,3 +98,11 @@ drivers/lydos-hybrid/   driver (koppelen, flowkaarten) en device (status, bestur
 locales/                Engelse en Nederlandse teksten
 scripts/                testscript en generator voor de PNG-afbeeldingen
 ```
+
+Pull requests zijn welkom, vooral van mensen met een ander Lydos-model. Draai `homey app validate` voordat je iets instuurt.
+
+## Licentie
+
+[GPL-3.0-or-later](LICENSE)
+
+Deze app is niet verbonden aan Atag of Ariston. De gebruikte cloud-API is niet officieel gedocumenteerd, dus Atag/Ariston kan hem zonder aankondiging veranderen.
