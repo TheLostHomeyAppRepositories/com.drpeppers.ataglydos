@@ -6,6 +6,12 @@ const { AristonApi } = require('../../lib/AristonApi');
 class LydosHybridDriver extends Homey.Driver {
 
   async onInit() {
+    // Fires from the device when the shower count crosses the threshold downwards
+    this.showersBelowTrigger = this.homey.flow.getDeviceTriggerCard('showers_below');
+    this.showersBelowTrigger.registerRunListener((args, state) => {
+      return state.previous >= args.showers && state.current < args.showers;
+    });
+
     this.homey.flow.getActionCard('set_mode')
       .registerRunListener(({ device, mode }) => device.triggerCapabilityListener('lydos_mode', mode));
 

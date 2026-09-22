@@ -87,12 +87,26 @@ class LydosHybridDevice extends Homey.Device {
   }
 
   async updateCapabilities(data) {
+    const showersBefore = this.getCapabilityValue('lydos_showers');
+
     await this.setValue('measure_temperature', data.temp);
     await this.setValue('target_temperature', data.reqTemp);
     await this.setValue('onoff', data.on);
     await this.setValue('lydos_mode', AristonApi.modeToId(data.mode));
     await this.setValue('lydos_heating', data.heatReq);
     await this.setValue('lydos_showers', data.avShw);
+
+    await this.triggerShowersBelow(showersBefore, data.avShw);
+  }
+
+  // Only fires on the poll where the count actually drops, so a Flow does not
+  // run again on every poll while the shower count stays low.
+  async triggerShowersBelow(previous, current) {
+    if (typeof previous !== 'number' || typeof current !== 'number') return;
+    if (current >= previous) return;
+    await this.driver.showersBelowTrigger
+      .trigger(this, { showers: current }, { previous, current })
+      .catch(this.error);
   }
 
   async setValue(capability, value) {

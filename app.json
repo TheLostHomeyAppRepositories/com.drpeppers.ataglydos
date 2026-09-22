@@ -54,8 +54,52 @@
   "bugs": {
     "url": "https://github.com/WNijhof/homey-atag-lydos/issues"
   },
-  "homeyCommunityTopicId": 159850,
   "flow": {
+    "triggers": [
+      {
+        "id": "showers_below",
+        "title": {
+          "en": "Available showers dropped below",
+          "nl": "Beschikbare douchebeurten gedaald onder"
+        },
+        "titleFormatted": {
+          "en": "Available showers dropped below [[showers]]",
+          "nl": "Beschikbare douchebeurten gedaald onder [[showers]]"
+        },
+        "hint": {
+          "en": "Fires once when the number of available showers drops below this number, not on every update while it stays low.",
+          "nl": "Gaat af zodra het aantal beschikbare douchebeurten onder dit getal zakt, niet bij elke update zolang het laag blijft."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=lydos-hybrid"
+          },
+          {
+            "type": "number",
+            "name": "showers",
+            "title": {
+              "en": "Showers",
+              "nl": "Douchebeurten"
+            },
+            "min": 1,
+            "max": 10,
+            "step": 1
+          }
+        ],
+        "tokens": [
+          {
+            "name": "showers",
+            "type": "number",
+            "title": {
+              "en": "Available showers",
+              "nl": "Beschikbare douchebeurten"
+            }
+          }
+        ]
+      }
+    ],
     "conditions": [
       {
         "id": "mode_is",
