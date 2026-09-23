@@ -3,6 +3,7 @@
     "not_logged_in": "Nog niet ingelogd. Ga terug en vul je Atag / Ariston NET-gegevens opnieuw in.",
     "auth_failed": "Inloggen mislukt. Herstel het apparaat en vul je Atag / Ariston NET-gegevens opnieuw in.",
     "no_data": "Geen gegevens ontvangen van de Ariston-cloud (is de boiler online?)",
-    "green_max": "In Green-modus haalt de warmtepomp maximaal __max__ °C. Kies een lagere temperatuur of een andere modus."
+    "green_max": "In Green-modus haalt de warmtepomp maximaal __max__ °C. Kies een lagere temperatuur of een andere modus.",
+    "rate_limited": "De Ariston-cloud kreeg te veel verzoeken. Gepauzeerd voor __minutes__ minuten."
   }
 }

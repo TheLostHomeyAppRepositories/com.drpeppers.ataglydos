@@ -12,6 +12,9 @@ class LydosHybridDriver extends Homey.Driver {
       return state.previous >= args.showers && state.current < args.showers;
     });
 
+    this.heatingStartedTrigger = this.homey.flow.getDeviceTriggerCard('heating_started');
+    this.heatingStoppedTrigger = this.homey.flow.getDeviceTriggerCard('heating_stopped');
+
     this.homey.flow.getActionCard('set_mode')
       .registerRunListener(({ device, mode }) => device.triggerCapabilityListener('lydos_mode', mode));
 

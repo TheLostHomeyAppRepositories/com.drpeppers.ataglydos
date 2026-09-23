@@ -11,6 +11,11 @@
     "en": "Added the community post number"
   },
   "1.1.0": {
-    "en": "Nieuwe flowkaart: Als beschikbare douchebeurten gedaald onder … — met het aantal als tag."
+    "en": "New Flow card: When available showers dropped below … — with the number as a tag.",
+    "nl": "Nieuwe flowkaart: Als beschikbare douchebeurten gedaald onder … — met het aantal als tag."
+  },
+  "1.2.0": {
+    "en": "New Flow cards: Started / Stopped heating. Stops polling after a failed login (prevents account lockout), pauses after too many requests, skips commands that change nothing, and accepts a Boost temperature set together with the mode in one Flow.",
+    "nl": "Nieuwe flowkaarten: Begint / Stopt met opwarmen. Stopt met ophalen na een mislukte login (voorkomt accountblokkade), pauzeert bij te veel verzoeken, slaat opdrachten over die niets veranderen, en accepteert een Boost-temperatuur die in dezelfde Flow als de modus wordt gezet."
   }
 }

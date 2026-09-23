@@ -37,6 +37,50 @@
           }
         }
       ]
+    },
+    {
+      "id": "heating_started",
+      "title": {
+        "en": "Started heating",
+        "nl": "Begint met opwarmen"
+      },
+      "hint": {
+        "en": "Based on the status from the Ariston cloud, so it can lag up to one polling interval.",
+        "nl": "Gebaseerd op de status uit de Ariston-cloud, dus kan tot één ophaalinterval achterlopen."
+      },
+      "tokens": [
+        {
+          "name": "temperature",
+          "type": "number",
+          "title": {
+            "en": "Water temperature",
+            "nl": "Watertemperatuur"
+          },
+          "example": 48
+        }
+      ]
+    },
+    {
+      "id": "heating_stopped",
+      "title": {
+        "en": "Stopped heating",
+        "nl": "Stopt met opwarmen"
+      },
+      "hint": {
+        "en": "Based on the status from the Ariston cloud, so it can lag up to one polling interval.",
+        "nl": "Gebaseerd op de status uit de Ariston-cloud, dus kan tot één ophaalinterval achterlopen."
+      },
+      "tokens": [
+        {
+          "name": "temperature",
+          "type": "number",
+          "title": {
+            "en": "Water temperature",
+            "nl": "Watertemperatuur"
+          },
+          "example": 48
+        }
+      ]
     }
   ],
   "actions": [

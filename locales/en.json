@@ -3,6 +3,7 @@
     "not_logged_in": "Not logged in yet. Go back and enter your Atag / Ariston NET credentials again.",
     "auth_failed": "Login failed. Repair the device and enter your Atag / Ariston NET credentials again.",
     "no_data": "No data received from the Ariston cloud (is the water heater online?)",
-    "green_max": "In Green mode the heat pump reaches at most __max__ °C. Choose a lower temperature or switch to another mode."
+    "green_max": "In Green mode the heat pump reaches at most __max__ °C. Choose a lower temperature or switch to another mode.",
+    "rate_limited": "The Ariston cloud received too many requests. Paused for __minutes__ minutes."
   }
 }

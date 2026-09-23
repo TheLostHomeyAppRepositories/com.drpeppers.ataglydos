@@ -26,7 +26,7 @@ Watertemperatuur en douchebeurten worden bijgehouden in Insights, dus je kunt he
 
 ### Flowkaarten
 
-- **Als** — Beschikbare douchebeurten gedaald onder …, Temperatuur veranderd, Doeltemperatuur veranderd
+- **Als** — Beschikbare douchebeurten gedaald onder …, Begint met opwarmen, Stopt met opwarmen, Temperatuur veranderd, Doeltemperatuur veranderd
 - **En** — Modus is …, Is aan het opwarmen
 - **Dan** — Stel temperatuur in, Zet modus op …, Zet aan/uit
 
@@ -43,7 +43,9 @@ Uit de Atag-handleiding, en belangrijk als je flows gaat bouwen:
 
 De warmtepomp komt tot 53 °C; daarboven verwarmt alleen het element. **Wil je vanuit Homey sturen** — op zonne-overschot of een dynamisch stroomtarief bijvoorbeeld — **gebruik dan Green.** Dat is de enige modus die precies doet wat je vraagt en niets achteraf bijstelt.
 
-De status wordt standaard elke 5 minuten opgehaald, per apparaat instelbaar tussen 2 en 60 minuten. Vaker dan dat is niet verstandig: de Ariston-cloud kan je account tijdelijk blokkeren (HTTP 429).
+De status wordt standaard elke 5 minuten opgehaald, per apparaat instelbaar tussen 2 en 60 minuten. Vaker dan dat is niet verstandig: de Ariston-cloud kan je account tijdelijk blokkeren (HTTP 429). Gebeurt dat toch, dan pauzeert de app zelf (5, 10, 20 … tot 60 minuten) en toont hij een waarschuwing. Opdrachten die niets veranderen (dezelfde temperatuur of modus) worden niet verstuurd. Na een mislukte login stopt de app met ophalen tot je het apparaat repareert, zodat je account niet geblokkeerd raakt.
+
+**Boost en temperatuur in één Flow:** zet je in dezelfde Flow de modus op Boost en de temperatuur boven 53 °C, dan wacht de app even op de moduswissel in plaats van de temperatuur te weigeren.
 
 ## Problemen oplossen
 
